@@ -1,5 +1,11 @@
 <template>
 	<div>
+		<input type="text" name="" id="" v-model="toy">Toy:{{ toy }} <br>
+		<input type="text" name="" id="" v-model="instrument">Instrument:{{ instrument }} <br>
+		<button @click="stopEffect">Stop Watch Effect</button>
+		<input type="text" name="" id="" v-model="head">FirstName:{{ head }} <br>
+		<input type="text" name="" id="" v-model="tail">LastName:{{ tail }} <br>
+		<input type="text" name="" id="" v-model="skeleton.foo.bar.name"> {{ skeleton.foo.bar.name }}<br>
 		<input type="text" name="" id="" v-model="firstName">FirstName:{{ firstName }} <br>
 		<input type="text" name="" id="" v-model="lastName">LastName:{{ lastName }} <br>
 
@@ -30,7 +36,7 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { computed, ref, reactive } from 'vue'
+import { computed, ref, reactive, watch, watchEffect } from 'vue'
 const firstName = ref('')
 const lastName = ref('')
 
@@ -84,6 +90,53 @@ total_price = computed<number>(() => {
 	}, 0)
 })
 //calcTotal()
+
+
+/**
+ * Watch
+ */
+const head = ref('Hello')
+const tail = ref('World')
+const skeleton = reactive({
+	foo: {
+		bar: {
+			name: 'Cannon'
+		}
+	}
+})
+watch(head, (newVal, oldVal) => {
+	console.log('new:', newVal)
+	console.log('old:', oldVal)
+})
+watch([head, tail], (newVal, oldVal) => {
+	console.log('new:', newVal)
+	console.log('old:', oldVal)
+})
+
+// watch(skeleton, (newVal, oldVal) => {
+// 	console.log('new:', newVal)
+// 	console.log('old:', oldVal)
+// })
+
+watch(() => skeleton.foo.bar.name, (newVal, oldVal) => {
+	console.log('new:', newVal)
+	console.log('old:', oldVal)
+}, { immediate: true })
+//, { deep: true }
+// {immediate: true}
+
+const toy = ref('Airplane')
+const instrument = ref('Fiddle')
+
+const stopEffect = watchEffect((onInvalidate) => {
+	console.log('toy:', toy.value)
+	console.log('instrument:', instrument.value)
+	onInvalidate(() => {
+		console.log('Before watch effect i want to do...')
+	})
+})
+
+
 </script>
 
 
