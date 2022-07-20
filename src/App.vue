@@ -1,19 +1,17 @@
 <template>
-	<div class="main">
-		<div class="footer">awd</div>
-	</div>
+	<Main></Main>
 </template>
 <script setup lang="ts">
-import { onBeforeMount, onBeforeUpdate, onUpdated, onBeforeUnmount, ref, onUnmounted } from 'vue';
-import fh from './components/forehead.vue'
-const isShowForehead = ref(true)
+import Main from './views/index.vue'
 </script>
 
 
-<style scoped lang="scss">
-.main {
-	.footer {
-		background-color: red;
-	}
+<style  lang="scss">
+html,
+body,
+#app {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
 }
 </style>

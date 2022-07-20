@@ -1,10 +1,17 @@
 <template>
-	Header area
+	<div class="header">
+		Header area
+	</div>
 </template>
 	
 <script setup lang='ts'>
 
 </script>
 	
-<style>
+<style lang="scss" scoped>
+.header {
+	width: 100%;
+	background-color: aqua;
+	height: 60px;
+}
 </style>
