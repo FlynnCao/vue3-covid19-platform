@@ -11,14 +11,43 @@
 		<div :key="index" v-for="(item, index) in dataList" class="content-item">
 			<Card :title="item.label" :content="`$${item.price}`"></Card>
 		</div>
+		<DynamicDialog>
+			<template #[slotName]>
+				<div>
+					Where is me?
+				</div>
+			</template>
+		</DynamicDialog>
+
 	</div>
+
+	<Dialog>
+		<template #header>
+			<div>
+				I am the top part insertion.
+			</div>
+		</template>
+		<template #default="{ data, index }">
+			<div>
+				<div> {{ index }} -- {{ data?.name }} -- {{ data?.rate }}</div>
+			</div>
+		</template>
+		<template #footer>
+			<div>
+				I am the bottom part insertion.
+			</div>
+		</template>
+	</Dialog>
 </template>
 	
 <script setup lang='ts'>
 import Apple from '@/components/Dynamics/Apple.vue'
 import Butter from '@/components/Dynamics/Butter.vue'
 import Cat from '@/components/Dynamics/Cat.vue'
-import { reactive, markRaw, shallowReactive } from 'vue';
+import Dialog from '@/components/Dialog/index.vue'
+import DynamicDialog from '@/components/DynamicDialog/index.vue'
+import { reactive, markRaw, shallowReactive, ref } from 'vue';
+const slotName = ref('center')
 type Tabs = {
 	name: string
 	comName: any
