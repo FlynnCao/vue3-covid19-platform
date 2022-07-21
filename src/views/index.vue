@@ -20,7 +20,6 @@ const el = ref<null>(null)
 onMounted(() => {
 	const elDOM: any = el.value
 	console.log('elDOM', elDOM)
-	elDOM.init()
 })
 const handleUpdate = (data: string[], flag: boolean) => {
 	console.log('catch children update')

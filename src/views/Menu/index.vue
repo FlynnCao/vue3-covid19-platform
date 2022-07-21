@@ -1,45 +1,43 @@
 <template>
 	<div class="menu">
-		<div>
-			{{ title }}
-		</div>
-		<div>
-			{{ data }}
-		</div>
-		<div>
-			<button @click="clickTap">Distribute</button>
-			<button @click="clickTouch">Set Off</button>
-		</div>
+		<Tree :data="data"></Tree>
 	</div>
 </template>
 	
 <script setup lang='ts'>
-import { reactive } from 'vue'
-type Props = {
-	title: string
-	data: number[]
-}
-// defineProps<Props>()
-withDefaults(defineProps<Props>(), {
-	title: 'Default Title',
-	data: () => [0, 0, 0, 0]
-})
-const insideList: string[] = ['Java', 'C++', 'JavaScript']
-const emitBody = defineEmits(['update', 'change'])
-const clickTap = () => {
-	emitBody('update', insideList, true)
-}
-const clickTouch = () => {
-	emitBody('change')
-}
-const init = () => {
-	console.log('Init child component.')
-}
-defineExpose({
-	insideList,
-	init
-})
+import Tree from '../../components/Tree/index.vue'
+import { reactive } from 'vue';
+import type { TreeElement } from '../../components/Types/tree';
+const data = reactive<TreeElement[]>([
+	{
+		name: 'no1',
+		children: [
+			{
+				name: '1-1',
+				children: [
+					{ name: '1-1-1' }
+				]
+			},
+			{
+				name: '2-1',
+				children: [
+					{
+						name: '2-1-1'
+					}
+				]
+			},
+			{
+				name: '3-1'
+			},
+			{
+				name: '4-1'
+			}
+		]
+	}
+])
 </script>
+
+
 
 <style lang="scss" scoped>
 .menu {
