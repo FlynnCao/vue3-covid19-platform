@@ -1,27 +1,16 @@
 <template>
-	<div class="content">
-		<Suspense>
-			<template #default>
-				<div>
-					<Chart></Chart>
-				</div>
-			</template>
-			<template #fallback>
-				<div>
-					Loading...
-				</div>
-			</template>
-		</Suspense>
+	<div class="content" style="background-color: lightblue;">
+		<teleport to='.modal'>
+			<div class="tele">
+				Where should I be placed?
+			</div>
+		</teleport>
 	</div>
-
 </template>
 	
 <script setup lang='ts'>
-import { defineAsyncComponent, reactive, ref } from 'vue'
-//import Chart from '@/components/Chart/index.vue'
-const Chart = defineAsyncComponent(() =>
-	import('@/components/Chart/index.vue')
-)
+import { reactive, ref } from 'vue'
+
 
 </script>
 
@@ -47,5 +36,14 @@ const Chart = defineAsyncComponent(() =>
 	.content-item {
 		padding: 20px;
 	}
+}
+
+.tele {
+	position: absolute;
+	right: 50px;
+	top: 50px;
+	background-color: red;
+	padding: 10px;
+	color: white;
 }
 </style>
