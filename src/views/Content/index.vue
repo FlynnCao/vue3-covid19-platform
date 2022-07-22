@@ -1,15 +1,22 @@
 <template>
-	<div class="content" style="background-color: lightblue;">
-		<teleport to='.modal'>
-			<div class="tele">
-				Where should I be placed?
-			</div>
-		</teleport>
+	<div class="content">
+		<button @click="switchCom">Switch</button>
+		<keep-alive :include="['login']">
+			<Login v-if="flag"></Login>
+			<Register v-else></Register>
+		</keep-alive>
 	</div>
 </template>
 	
 <script setup lang='ts'>
 import { reactive, ref } from 'vue'
+import Login from '@/components/Login/index.vue'
+import Register from '@/components/Register/index.vue'
+const flag = ref(true)
+const switchCom = () => {
+	flag.value = !flag.value
+}
+
 
 
 </script>
