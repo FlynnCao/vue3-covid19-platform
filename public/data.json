@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Tony Stark",
+		"nickname": "Iron Man",
+		"age": 40
+	},
+	{
+		"name": "Steve Rogers",
+		"nickname": "Captain America",
+		"age": 100
+	},
+	{
+		"name": "Natasha Romanova",
+		"nickname": "Black Widow",
+		"age": 28
+	},
+	{
+		"name": "Peter Parker",
+		"nickname": "Spider Man",
+		"age": 21
+	}
+]
