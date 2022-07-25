@@ -1,24 +1,31 @@
 <template>
-	<div class="content">
-		<button @click="switchCom">Switch</button>
-		<keep-alive :include="['login']">
-			<Login v-if="flag"></Login>
-			<Register v-else></Register>
-		</keep-alive>
+	<button @click="isGroup = !isGroup">Switch to {{ isGroup ? 'Transition Group' : 'Transition' }}</button>
+	<div class="content" v-if="isGroup">
+		<h1>Transition</h1>
+		<h2>Ordinary</h2>
+		<TransitionDemo></TransitionDemo>
+		<h2>With Animate.css</h2>
+		<TransitionWithAnimateVue></TransitionWithAnimateVue>
+		<h2>Appear</h2>
+		<TransitionSimpleVue></TransitionSimpleVue>
+	</div>
+	<div class="content" v-if="!isGroup">
+		<h1>Transition Group</h1>
+		<TransitionGroupVue></TransitionGroupVue>
+		<TransitionComplexVue></TransitionComplexVue>
+		<TransitionStateVue></TransitionStateVue>
 	</div>
 </template>
 	
 <script setup lang='ts'>
-import { reactive, ref } from 'vue'
-import Login from '@/components/Login/index.vue'
-import Register from '@/components/Register/index.vue'
-const flag = ref(true)
-const switchCom = () => {
-	flag.value = !flag.value
-}
-
-
-
+import { ref } from 'vue';
+import TransitionStateVue from './components/TransitionState.vue';
+import TransitionDemo from '@/views/Content/components/TransitionDemo.vue'
+import TransitionWithAnimateVue from './components/TransitionWithAnimate.vue';
+import TransitionSimpleVue from './components/TransitionSimple.vue';
+import TransitionGroupVue from './components/TransitionGroup.vue';
+import TransitionComplexVue from './components/TransitionComplex.vue';
+const isGroup = ref(true)
 </script>
 
 <style lang="scss" scoped>
