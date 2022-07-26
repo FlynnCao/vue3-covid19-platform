@@ -8,8 +8,8 @@
 </template>
 	
 <script setup lang='ts'>
-import PrimaryRoom from '@/views/Content/components/PrimaryRoom.vue'
-import SecondaryRoom from '@/views/Content/components/SecondaryRoom.vue'
+import PrimaryRoom from './PrimaryRoom.vue'
+import SecondaryRoom from './SecondaryRoom.vue'
 </script>
 	
 <style lang="scss" scoped>
