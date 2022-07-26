@@ -8,7 +8,7 @@
 	
 <script setup lang='ts'>
 import { ref } from 'vue'
-import Bus from '../utils/CustomBus';
+import Bus from '../../utils/CustomBus';
 const paper = ref('... ...')
 const sendMail = () => {
 	Bus.emit('ready', paper.value)

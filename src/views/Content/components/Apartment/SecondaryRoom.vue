@@ -7,7 +7,7 @@
 </template>
 	
 <script setup lang='ts'>
-import Bus from '../utils/CustomBus'
+import Bus from '../../utils/CustomBus'
 import { ref } from 'vue'
 const inbox = ref('... ...')
 Bus.on('ready', (msg: string) => {

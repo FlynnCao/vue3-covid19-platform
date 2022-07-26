@@ -2,19 +2,24 @@
 	<button @click="isShowPI = !isShowPI">Hide/Show Provide & Inject</button>
 	<button @click="isShowBus1 = !isShowBus1">Hide/Show Parent Bus Communication</button>
 	<button @click="isShowBus2 = !isShowBus2">Hide/Show Custom Bus Communication</button>
+	<button @click="isShowBus3 = !isShowBus3">Hide/Show Mitt </button>
+
 	<CondoVue v-if="isShowPI"></CondoVue>
 	<HouseVue v-if="isShowBus1"></HouseVue>
 	<ApartmentVue v-if="isShowBus2"></ApartmentVue>
+	<YardVue v-if="isShowBus3"></YardVue>
 </template>
 	
 <script setup lang='ts'>
 import { ref } from 'vue';
-import CondoVue from './components/Condo.vue';
-import HouseVue from './components/House.vue';
+import CondoVue from './components/Condo/Condo.vue';
+import HouseVue from './components/House/House.vue';
 import ApartmentVue from '@/views/Content/components/Apartment.vue'
+import YardVue from './components/Yard/Yard.vue';
 const isShowPI = ref(false)
-const isShowBus1 = ref(true)
-const isShowBus2 = ref(true)
+const isShowBus1 = ref(false)
+const isShowBus2 = ref(false)
+const isShowBus3 = ref(true)
 
 </script>
 
