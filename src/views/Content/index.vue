@@ -2,6 +2,8 @@
 	<button @click="isShowCA = !isShowCA">Hide/Show Communication Approaches</button>
 	<button @click="isShowPluginAndCustomVModel = !isShowPluginAndCustomVModel">Hide/Show Plugin Usage & Custom
 		v-model</button>
+	<button @click="showDirectiveVue = !showDirectiveVue">Show / Hide Directives</button>
+	<button @click="showCustomHooks = !showCustomHooks">Hide/Show Custom Hooks</button>
 
 	<div v-if="isShowCA">
 		<button @click="isShowPI = !isShowPI">Hide/Show Provide & Inject</button>
@@ -26,8 +28,9 @@
 		<MagicDialogVue v-model:title.underline="MagicDialogTitle" v-model.styledTitle="MagicDialogVisibility">
 		</MagicDialogVue>
 	</div>
-	<button @click="showDirectiveVue = !showDirectiveVue">Show / Hide Directives</button>
 	<DirectivesVue v-if="showDirectiveVue"></DirectivesVue>
+	<CustomHooksVue v-if="showCustomHooks"></CustomHooksVue>
+
 </template>
 	
 <script setup lang='ts'>
@@ -38,6 +41,7 @@ import YardVue from './components/Yard/Yard.vue';
 import PluginTest from './components/PluginTest/index.vue'
 import MagicDialogVue from '@/components/MagicDialog/index.vue'
 import DirectivesVue from './components/Directives/index.vue'
+import CustomHooksVue from './components/CustomHooks/index.vue'
 const isShowPI = ref(false)
 const isShowBus1 = ref(false)
 const isShowBus2 = ref(false)
@@ -46,7 +50,9 @@ const isShowCA = ref(false)
 const isShowPluginAndCustomVModel = ref(false)
 const MagicDialogTitle = ref<string>('Promenade of Condemned')
 const MagicDialogVisibility = ref<boolean>(true)
-const showDirectiveVue = ref<boolean>(true)
+const showDirectiveVue = ref<boolean>(false)
+const showCustomHooks = ref<boolean>(true)
+
 </script>
 
 <style lang="scss" scoped>
