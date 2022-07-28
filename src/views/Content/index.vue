@@ -27,13 +27,10 @@
 		</MagicDialogVue>
 	</div>
 	<button @click="showDirectiveVue = !showDirectiveVue">Show / Hide Directives</button>
-
-	<DirectivesVue v-if="showDirectiveVue" v-move:main.classic="{ offsetX: 10, offsetY: 20 }"></DirectivesVue>
-	<p>MyPosition:x:{{ myPos.offsetX }};y:{{ myPos.offsetY }}</p>
+	<DirectivesVue v-if="showDirectiveVue"></DirectivesVue>
 </template>
 	
 <script setup lang='ts'>
-import { Directive, DirectiveBinding } from 'vue';
 import CondoVue from './components/Condo/Condo.vue';
 import HouseVue from './components/House/House.vue';
 import ApartmentVue from './components/Apartment/Apartment.vue'
@@ -50,40 +47,6 @@ const isShowPluginAndCustomVModel = ref(false)
 const MagicDialogTitle = ref<string>('Promenade of Condemned')
 const MagicDialogVisibility = ref<boolean>(true)
 const showDirectiveVue = ref<boolean>(true)
-const myPos = ref<Pos>({ offsetX: 0, offsetY: 0 })
-type Pos = {
-	offsetX: number
-	offsetY: number
-}
-const vMove: Directive = {
-	created(...args: Array<any>) {
-		console.log('==========>Created')
-	},
-	beforeMount(...args: Array<any>) {
-		console.log('==========>beforeMount')
-	},
-	mounted(el: HTMLElement, payload: DirectiveBinding<Pos>) {
-		console.log('==========>mounted')
-		console.log('el', el)
-		// -> <div class="box" data-v-9a152160 data-v-416c9d51></div>
-		console.log('payload', payload)
-		console.log('payload.value', payload.value)
-		myPos.value = payload.value
-		// -> {dir: {…}, instance: Proxy, value: {…}, oldValue: undefined, arg: 'main', …}
-	},
-	beforeUpdate() {
-		console.log('==========>beforeUpdate')
-	},
-	updated() {
-		console.log('==========>updated')
-	},
-	beforeUnmount() {
-		console.log('==========>beforeUnmount')
-	},
-	unmounted() {
-		console.log('==========>unmounted')
-	}
-}
 </script>
 
 <style lang="scss" scoped>
