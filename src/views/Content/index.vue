@@ -1,5 +1,8 @@
 <template>
 	<button @click="isShowCA = !isShowCA">Hide/Show Communication Approaches</button>
+	<button @click="isShowPluginAndCustomVModel = !isShowPluginAndCustomVModel">Hide/Show Plugin Usage & Custom
+		v-model</button>
+
 	<div v-if="isShowCA">
 		<button @click="isShowPI = !isShowPI">Hide/Show Provide & Inject</button>
 		<button @click="isShowBus1 = !isShowBus1">Hide/Show Parent Bus Communication</button>
@@ -10,33 +13,77 @@
 		<ApartmentVue v-if="isShowBus2"></ApartmentVue>
 		<YardVue v-if="isShowBus3"></YardVue>
 	</div>
-	<PluginTest></PluginTest>
-	<p>
-		MagicDialogVisibility:{{ MagicDialogVisibility }}
-	</p>
-	<p>
-		MagicDialogTitle:{{ MagicDialogTitle }}
-	</p>
+	<div v-if="isShowPluginAndCustomVModel">
+		<PluginTest></PluginTest>
+		<p>
+			MagicDialogVisibility:{{ MagicDialogVisibility }}
+		</p>
+		<p>
+			MagicDialogTitle:{{ MagicDialogTitle }}
+		</p>
 
-	<button @click="MagicDialogVisibility = !MagicDialogVisibility">Show/Hide Magic Dialog</button>
-	<MagicDialogVue v-model:title.underline="MagicDialogTitle" v-model.styledTitle="MagicDialogVisibility">
-	</MagicDialogVue>
+		<button @click="MagicDialogVisibility = !MagicDialogVisibility">Show/Hide Magic Dialog</button>
+		<MagicDialogVue v-model:title.underline="MagicDialogTitle" v-model.styledTitle="MagicDialogVisibility">
+		</MagicDialogVue>
+	</div>
+	<button @click="showDirectiveVue = !showDirectiveVue">Show / Hide Directives</button>
+
+	<DirectivesVue v-if="showDirectiveVue" v-move:main.classic="{ offsetX: 10, offsetY: 20 }"></DirectivesVue>
+	<p>MyPosition:x:{{ myPos.offsetX }};y:{{ myPos.offsetY }}</p>
 </template>
 	
 <script setup lang='ts'>
+import { Directive, DirectiveBinding } from 'vue';
 import CondoVue from './components/Condo/Condo.vue';
 import HouseVue from './components/House/House.vue';
 import ApartmentVue from './components/Apartment/Apartment.vue'
 import YardVue from './components/Yard/Yard.vue';
 import PluginTest from './components/PluginTest/index.vue'
 import MagicDialogVue from '@/components/MagicDialog/index.vue'
+import DirectivesVue from './components/Directives/index.vue'
 const isShowPI = ref(false)
 const isShowBus1 = ref(false)
 const isShowBus2 = ref(false)
 const isShowBus3 = ref(false)
 const isShowCA = ref(false)
+const isShowPluginAndCustomVModel = ref(false)
 const MagicDialogTitle = ref<string>('Promenade of Condemned')
 const MagicDialogVisibility = ref<boolean>(true)
+const showDirectiveVue = ref<boolean>(true)
+const myPos = ref<Pos>({ offsetX: 0, offsetY: 0 })
+type Pos = {
+	offsetX: number
+	offsetY: number
+}
+const vMove: Directive = {
+	created(...args: Array<any>) {
+		console.log('==========>Created')
+	},
+	beforeMount(...args: Array<any>) {
+		console.log('==========>beforeMount')
+	},
+	mounted(el: HTMLElement, payload: DirectiveBinding<Pos>) {
+		console.log('==========>mounted')
+		console.log('el', el)
+		// -> <div class="box" data-v-9a152160 data-v-416c9d51></div>
+		console.log('payload', payload)
+		console.log('payload.value', payload.value)
+		myPos.value = payload.value
+		// -> {dir: {…}, instance: Proxy, value: {…}, oldValue: undefined, arg: 'main', …}
+	},
+	beforeUpdate() {
+		console.log('==========>beforeUpdate')
+	},
+	updated() {
+		console.log('==========>updated')
+	},
+	beforeUnmount() {
+		console.log('==========>beforeUnmount')
+	},
+	unmounted() {
+		console.log('==========>unmounted')
+	}
+}
 </script>
 
 <style lang="scss" scoped>

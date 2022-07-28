@@ -19,13 +19,11 @@ const list = reactive<number[]>([1, 2, 3])
 const el = ref<null>(null)
 onMounted(() => {
 	const elDOM: any = el.value
-	console.log('elDOM', elDOM)
 })
 const handleUpdate = (data: string[], flag: boolean) => {
 	console.log('catch children update')
 	console.log('children data :>> ', data);
 	console.log('children mark :>> ', flag);
-
 }
 const handleChange = (() => {
 	console.log('catch children change')
