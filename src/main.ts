@@ -4,8 +4,9 @@ import App from "./App.vue";
 import mitt from "mitt";
 import Card from "./components/Card/index.vue";
 import Loading from "@/components/Loading";
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
 const Mitt = mitt(); // instantiate
-
 const app = createApp(App);
 
 type Filter = {
@@ -29,6 +30,8 @@ app.config.globalProperties.$Filters = {
     return `FlynnChao @ ${str}`;
   },
 };
+
+app.use(ElementPlus);
 
 app.use(Loading);
 

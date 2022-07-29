@@ -33,6 +33,9 @@
 	<p>{{ $Filters.copyright('Do not touch') }}</p>
 	<button @click="$loading.show">Show Dialog</button>
 	<button @click="$loading.hide">Hide Dialog</button>
+	<el-button type="primary">123</el-button>
+	<el-input :rows="2" placeholder="" :maxlength="-1" :show-word-limit="false" :autosize="{ minRows: 2, maxRows: 4 }">
+	</el-input>
 
 </template>
 	
