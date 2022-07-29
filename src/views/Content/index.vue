@@ -30,10 +30,14 @@
 	</div>
 	<DirectivesVue v-if="showDirectiveVue"></DirectivesVue>
 	<CustomHooksVue v-if="showCustomHooks"></CustomHooksVue>
+	<p>{{ $Filters.copyright('Do not touch') }}</p>
+	<button @click="$loading.show">Show Dialog</button>
+	<button @click="$loading.hide">Hide Dialog</button>
 
 </template>
 	
 <script setup lang='ts'>
+import { getCurrentInstance } from 'vue';
 import CondoVue from './components/Condo/Condo.vue';
 import HouseVue from './components/House/House.vue';
 import ApartmentVue from './components/Apartment/Apartment.vue'
@@ -51,8 +55,7 @@ const isShowPluginAndCustomVModel = ref(false)
 const MagicDialogTitle = ref<string>('Promenade of Condemned')
 const MagicDialogVisibility = ref<boolean>(true)
 const showDirectiveVue = ref<boolean>(false)
-const showCustomHooks = ref<boolean>(true)
-
+const showCustomHooks = ref<boolean>(false)
 </script>
 
 <style lang="scss" scoped>

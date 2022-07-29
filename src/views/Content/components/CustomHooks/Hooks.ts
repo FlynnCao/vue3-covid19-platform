@@ -1,5 +1,4 @@
 import { onMounted } from "vue";
-import { resolve } from "path";
 type Options = {
   el: string;
 };
