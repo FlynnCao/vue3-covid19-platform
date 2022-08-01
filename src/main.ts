@@ -6,6 +6,7 @@ import Card from "./components/Card/index.vue";
 import Loading from "@/components/Loading";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+import "@/styles/tailwind.css";
 const Mitt = mitt(); // instantiate
 const app = createApp(App);
 

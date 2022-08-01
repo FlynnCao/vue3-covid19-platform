@@ -1,17 +1,17 @@
 <template>
 	<div class="content">
-		<button @click="isShowCA = !isShowCA">Hide/Show Communication Approaches</button>
-		<button @click="isShowPluginAndCustomVModel = !isShowPluginAndCustomVModel">Hide/Show Plugin Usage & Custom
-			v-model</button>
-		<button @click="showDirectiveVue = !showDirectiveVue">Show / Hide Directives</button>
-		<button @click="showCustomHooks = !showCustomHooks">Hide/Show Custom Hooks</button>
-		<button @click="isSHowCSSFeatures = !isSHowCSSFeatures">Hide/Show CSS New Features</button>
+		<el-button @click="isShowCA = !isShowCA">Hide/Show Communication Approaches</el-button>
+		<el-button @click="isShowPluginAndCustomVModel = !isShowPluginAndCustomVModel">Hide/Show Plugin Usage & Custom
+			v-model</el-button>
+		<el-button @click="showDirectiveVue = !showDirectiveVue">Show / Hide Directives</el-button>
+		<el-button @click="showCustomHooks = !showCustomHooks">Hide/Show Custom Hooks</el-button>
+		<el-button @click="isSHowCSSFeatures = !isSHowCSSFeatures">Hide/Show CSS New Features</el-button>
 
 		<div v-if="isShowCA">
-			<button @click="isShowPI = !isShowPI">Hide/Show Provide & Inject</button>
-			<button @click="isShowBus1 = !isShowBus1">Hide/Show Parent Bus Communication</button>
-			<button @click="isShowBus2 = !isShowBus2">Hide/Show Custom Bus Communication</button>
-			<button @click="isShowBus3 = !isShowBus3">Hide/Show Mitt </button>
+			<el-button @click="isShowPI = !isShowPI">Hide/Show Provide & Inject</el-button>
+			<el-button @click="isShowBus1 = !isShowBus1">Hide/Show Parent Bus Communication</el-button>
+			<el-button @click="isShowBus2 = !isShowBus2">Hide/Show Custom Bus Communication</el-button>
+			<el-button @click="isShowBus3 = !isShowBus3">Hide/Show Mitt </el-button>
 			<CondoVue v-if="isShowPI"></CondoVue>
 			<HouseVue v-if="isShowBus1"></HouseVue>
 			<ApartmentVue v-if="isShowBus2"></ApartmentVue>
@@ -32,32 +32,14 @@
 		</div>
 		<DirectivesVue v-if="showDirectiveVue"></DirectivesVue>
 		<CustomHooksVue v-if="showCustomHooks"></CustomHooksVue>
-		<p>{{ $Filters.copyright('Do not touch') }}</p>
-		<button @click="$loading.show">Show Dialog</button>
-		<button @click="$loading.hide">Hide Dialog</button>
-		<el-button type="primary">123</el-button>
-		<el-input :rows="2" placeholder="" :maxlength="-1" :show-word-limit="false" :autosize="{ minRows: 2, maxRows: 4 }">
-		</el-input>
-		<div>
-			<el-input v-model="greeting" class="cc-input ">
-			</el-input>
-		</div>
-		<div>
-			<el-button class="cc-btn">Make Order</el-button>
-		</div>
-
-		<p>{{ greeting }}</p>
-		<CSSFeaturesVue></CSSFeaturesVue>
+		<TailWindVue v-if="isShowTailWind"></TailWindVue>
 	</div>
-
-
 
 </template>
 	
 <script setup lang='ts'>
-import CSSFeaturesVue from './components/CSSFeatures/index.vue';
+import TailWindVue from './components/Tailwind/index.vue'
 import CondoVue from './components/Condo/Condo.vue';
-import HouseVue from './components/House/House.vue';
 import ApartmentVue from './components/Apartment/Apartment.vue'
 import YardVue from './components/Yard/Yard.vue';
 import PluginTest from './components/PluginTest/index.vue'
@@ -71,11 +53,11 @@ const isShowBus3 = ref(false)
 const isShowCA = ref(false)
 const isShowPluginAndCustomVModel = ref(false)
 const isSHowCSSFeatures = ref(true)
+const isShowTailWind = ref<boolean>(true)
 const MagicDialogTitle = ref<string>('Promenade of Condemned')
 const MagicDialogVisibility = ref<boolean>(true)
 const showDirectiveVue = ref<boolean>(false)
 const showCustomHooks = ref<boolean>(false)
-const greeting = ref<string>('Hello World')
 </script>
 
 <style lang="scss" scoped>
