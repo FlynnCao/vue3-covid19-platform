@@ -6,6 +6,8 @@
 		<el-button @click="showDirectiveVue = !showDirectiveVue">Show / Hide Directives</el-button>
 		<el-button @click="showCustomHooks = !showCustomHooks">Hide/Show Custom Hooks</el-button>
 		<el-button @click="isSHowCSSFeatures = !isSHowCSSFeatures">Hide/Show CSS New Features</el-button>
+		<el-button size="default" @click="isShowTailWind = !isShowTailWind">Hide/Show TailwindCSS Test</el-button>
+		<el-button size="default" @click="isShowNextTickTest = !isShowNextTickTest">Hide/Show NextTick Test</el-button>
 
 		<div v-if="isShowCA">
 			<el-button @click="isShowPI = !isShowPI">Hide/Show Provide & Inject</el-button>
@@ -33,6 +35,7 @@
 		<DirectivesVue v-if="showDirectiveVue"></DirectivesVue>
 		<CustomHooksVue v-if="showCustomHooks"></CustomHooksVue>
 		<TailWindVue v-if="isShowTailWind"></TailWindVue>
+		<NextTickVue v-if="isShowNextTickTest"></NextTickVue>
 	</div>
 
 </template>
@@ -46,6 +49,9 @@ import PluginTest from './components/PluginTest/index.vue'
 import MagicDialogVue from '@/components/MagicDialog/index.vue'
 import DirectivesVue from './components/Directives/index.vue'
 import CustomHooksVue from './components/CustomHooks/index.vue'
+import HouseVue from './components/House/House.vue';
+import NextTickVue from './components/NextTickTest/index.vue'
+import { collapseItemProps } from 'element-plus';
 const isShowPI = ref(false)
 const isShowBus1 = ref(false)
 const isShowBus2 = ref(false)
@@ -53,11 +59,13 @@ const isShowBus3 = ref(false)
 const isShowCA = ref(false)
 const isShowPluginAndCustomVModel = ref(false)
 const isSHowCSSFeatures = ref(true)
-const isShowTailWind = ref<boolean>(true)
+const isShowTailWind = ref<boolean>(false)
 const MagicDialogTitle = ref<string>('Promenade of Condemned')
-const MagicDialogVisibility = ref<boolean>(true)
+const MagicDialogVisibility = ref<boolean>(false)
 const showDirectiveVue = ref<boolean>(false)
 const showCustomHooks = ref<boolean>(false)
+const isShowNextTickTest = ref<boolean>(true)
+
 </script>
 
 <style lang="scss" scoped>
