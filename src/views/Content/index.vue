@@ -8,6 +8,8 @@
 		<el-button @click="isSHowCSSFeatures = !isSHowCSSFeatures">Hide/Show CSS New Features</el-button>
 		<el-button size="default" @click="isShowTailWind = !isShowTailWind">Hide/Show TailwindCSS Test</el-button>
 		<el-button size="default" @click="isShowNextTickTest = !isShowNextTickTest">Hide/Show NextTick Test</el-button>
+		<el-button size="default" @click="isShowUNOCSS = !isShowUNOCSS">Hide/Show UNOCSS</el-button>
+
 
 		<div v-if="isShowCA">
 			<el-button @click="isShowPI = !isShowPI">Hide/Show Provide & Inject</el-button>
@@ -36,11 +38,13 @@
 		<CustomHooksVue v-if="showCustomHooks"></CustomHooksVue>
 		<TailWindVue v-if="isShowTailWind"></TailWindVue>
 		<NextTickVue v-if="isShowNextTickTest"></NextTickVue>
+		<UnoCSSVue v-if="isShowUNOCSS"></UnoCSSVue>
 	</div>
 
 </template>
 	
 <script setup lang='ts'>
+import UnoCSSVue from './components/UnoCSS/index.vue'
 import TailWindVue from './components/Tailwind/index.vue'
 import CondoVue from './components/Condo/Condo.vue';
 import ApartmentVue from './components/Apartment/Apartment.vue'
@@ -64,7 +68,8 @@ const MagicDialogTitle = ref<string>('Promenade of Condemned')
 const MagicDialogVisibility = ref<boolean>(false)
 const showDirectiveVue = ref<boolean>(false)
 const showCustomHooks = ref<boolean>(false)
-const isShowNextTickTest = ref<boolean>(true)
+const isShowNextTickTest = ref<boolean>(false)
+const isShowUNOCSS = ref<boolean>(true)
 
 </script>
 

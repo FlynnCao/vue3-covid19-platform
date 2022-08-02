@@ -1,7 +1,6 @@
 <template>
 	<Main></Main>
 
-
 </template>
 <script setup lang="ts">
 import Main from './views/index.vue'
