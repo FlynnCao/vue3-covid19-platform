@@ -9,6 +9,7 @@
 		<el-button size="default" @click="isShowTailWind = !isShowTailWind">Hide/Show TailwindCSS Test</el-button>
 		<el-button size="default" @click="isShowNextTickTest = !isShowNextTickTest">Hide/Show NextTick Test</el-button>
 		<el-button size="default" @click="isShowUNOCSS = !isShowUNOCSS">Hide/Show UNOCSS</el-button>
+		<el-button size="default" @click="isShowFP = !isShowFP">Hide/Show Functional Programming</el-button>
 
 
 		<div v-if="isShowCA">
@@ -39,11 +40,13 @@
 		<TailWindVue v-if="isShowTailWind"></TailWindVue>
 		<NextTickVue v-if="isShowNextTickTest"></NextTickVue>
 		<UnoCSSVue v-if="isShowUNOCSS"></UnoCSSVue>
+		<FunctionalProgrammingVue v-if="isShowFP"></FunctionalProgrammingVue>
 	</div>
 
 </template>
 	
 <script setup lang='ts'>
+import FunctionalProgrammingVue from './components/FunctionalProgramming/index.vue'
 import UnoCSSVue from './components/UnoCSS/index.vue'
 import TailWindVue from './components/Tailwind/index.vue'
 import CondoVue from './components/Condo/Condo.vue';
@@ -55,7 +58,6 @@ import DirectivesVue from './components/Directives/index.vue'
 import CustomHooksVue from './components/CustomHooks/index.vue'
 import HouseVue from './components/House/House.vue';
 import NextTickVue from './components/NextTickTest/index.vue'
-import { collapseItemProps } from 'element-plus';
 const isShowPI = ref(false)
 const isShowBus1 = ref(false)
 const isShowBus2 = ref(false)
@@ -69,7 +71,8 @@ const MagicDialogVisibility = ref<boolean>(false)
 const showDirectiveVue = ref<boolean>(false)
 const showCustomHooks = ref<boolean>(false)
 const isShowNextTickTest = ref<boolean>(false)
-const isShowUNOCSS = ref<boolean>(true)
+const isShowUNOCSS = ref<boolean>(false)
+const isShowFP = ref<boolean>(true)
 
 </script>
 
