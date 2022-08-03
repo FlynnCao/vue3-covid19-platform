@@ -72,7 +72,7 @@ const showDirectiveVue = ref<boolean>(false)
 const showCustomHooks = ref<boolean>(false)
 const isShowNextTickTest = ref<boolean>(false)
 const isShowUNOCSS = ref<boolean>(false)
-const isShowFP = ref<boolean>(true)
+const isShowFP = ref<boolean>(false)
 
 </script>
 
